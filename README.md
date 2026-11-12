@@ -156,7 +156,7 @@ detections can no longer be matched to the right cone.
 ## How to run the project
 
 ```bash
-git clone <repo>
+git clone <https://github.com/stavmo/driverless-racecar.git>
 cd driverless-racecar
 docker compose up --build
 ```
