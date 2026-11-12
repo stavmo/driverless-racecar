@@ -1,0 +1,43 @@
+# Run everything: docker compose up --build
+# Results (charts, video, summary) appear in the ./results folder when it finishes.
+
+x-ros-env: &ros-env
+  ROS_DOMAIN_ID: "42"                       # both containers use the same channel
+  RMW_IMPLEMENTATION: rmw_fastrtps_cpp
+  FASTRTPS_DEFAULT_PROFILES_FILE: /fastdds.xml
+  FASTDDS_DEFAULT_PROFILES_FILE: /fastdds.xml
+  PYTHONUNBUFFERED: "1"                     # show log lines
+
+services:
+  world:                                      # CONTAINER 1: world
+    build:
+      context: .
+      dockerfile: docker/world.Dockerfile
+    environment: *ros-env
+    volumes:
+      - ./data:/data:ro                     # track csv
+      - ./results:/results                  #output folder
+    networks: [ros]
+    command: >
+      ros2 run world world_node --ros-args
+      -p csv_path:=/data/BrandsHatchLayout.csv
+      -p real_time_factor:=0.0
+      -p sensor_noise_scale:=1.0
+      -p detection_probability:=0.95
+      -p seed:=0
+
+  autonomy:                                 # CONTAINER 2: autonomy (brain)
+    build:
+      context: .
+      dockerfile: docker/autonomy.Dockerfile
+    environment: *ros-env
+    volumes:
+      - ./results:/results
+    networks: [ros]
+    command: >
+      ros2 run autonomy autonomy_node --ros-args
+      -p make_video:=true
+
+networks:
+  ros:
+    driver: bridge

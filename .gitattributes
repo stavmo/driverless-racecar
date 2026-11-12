@@ -1,0 +1,7 @@
+# Keep Linux line endings for files that run inside the containers,
+# even when the repo is cloned on Windows.
+*.sh   text eol=lf
+*.py   text eol=lf
+*.xml  text eol=lf
+*.msg  text eol=lf
+*.yml  text eol=lf

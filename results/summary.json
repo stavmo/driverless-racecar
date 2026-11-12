@@ -1,0 +1,45 @@
+{
+  "official": {
+    "lap_times_s": [
+      283.25,
+      104.94
+    ],
+    "cones_hit_per_lap": [
+      0,
+      0
+    ],
+    "cones_hit_total": 0,
+    "off_track_time_s": 0.0,
+    "sim_time_s": 394.31,
+    "track": {
+      "csv_points_left": 156,
+      "csv_points_right": 156,
+      "left_edge_length_m": 4019.3,
+      "right_edge_length_m": 3826.1,
+      "centerline_length_m": 3920.7,
+      "track_width_min_m": 22.6,
+      "track_width_mean_m": 27.6,
+      "track_width_max_m": 35.5,
+      "blue_cones": 803,
+      "yellow_cones": 765,
+      "orange_cones": 4
+    }
+  },
+  "brain": {
+    "mapped_cones": 1572,
+    "planned_lap_time_centerline_s": 101.02,
+    "centerline_length_m": 3902.8,
+    "max_cross_track_error_m": {
+      "Lap 2 \u00b7 fast lap": 1.88
+    },
+    "top_speed_kmh": 154.4
+  },
+  "mapping": {
+    "true_cones": 1572,
+    "mapped_cones": 1572,
+    "mean_error_cm": 10.7,
+    "p95_error_cm": 35.3,
+    "duplicate_or_ghost_cones": 0,
+    "true_cones_never_mapped": 0
+  }
+}
